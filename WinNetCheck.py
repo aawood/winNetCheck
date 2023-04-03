@@ -4,8 +4,8 @@ import socket
 
 wintoaster = WindowsToaster('Python')
 newToast = ToastText1()
-active = False
 
+active = True
 externalIPFile = "externalIP.txt"
 serverFile = "servers.txt"
 
@@ -20,9 +20,8 @@ def toast(message):
 def main():
     faults = 0
     
+    # Check for servers off network
     for serverIP in open(serverFile, "r"):
-        
-        # Check if server is off network
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(0.1)
         result = sock.connect_ex((serverIP.strip('\n'), 80))
@@ -32,7 +31,6 @@ def main():
             faults = 1
 
     # Check if External IP has changed
-
     with open(externalIPFile) as f:
         expectedExtIP = f.readline().strip('\n')
 
@@ -43,7 +41,6 @@ def main():
         faults = 1
 
     # If no issues found, send alert
-    
     if faults == 0:
         toast("No server issues detected.")
 
