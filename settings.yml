@@ -1,0 +1,4 @@
+active: True
+startDelay: 0
+externalIPFile: 'externalIP.txt'
+serverFile: 'servers.txt'
