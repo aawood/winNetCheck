@@ -5,7 +5,7 @@ I created this as I kept finding that my home-based web server was offline, eith
 
 
 # Setup
-Setup requires editing the two text files:
+Setup requires editing the three text files:
 
 externalIP.txt
 This should have one line, which is your expected external IPV4 address. If that ever changes, you should update this file to match.
@@ -13,4 +13,9 @@ This should have one line, which is your expected external IPV4 address. If that
 servers.txt
 This is a list of other Windows PCs on your network to check, by internal IPV4 address. You should have one server IP per line.
 
-You can adjust the filenames this looks for in the WinNetCheck.py file. If you want, you can also change "active" to False, at which point WinNetCheck will print it's messages rather than sending them as Toast Notifications.
+settings.yml
+A simple settings file:
+* Active: Whether the output is sent to a Toast notification (True), or just printed (False)
+* startDelay: How many seconds after being run the actual checks are made. This is intended for automated uise of this script at systems startup, to ensure the networking has time to activate before checks are made, to avoid false positives.
+* externalIPFile: The filename for the external IP address file
+* serverfile: The filename for the internal server IP addresses file
