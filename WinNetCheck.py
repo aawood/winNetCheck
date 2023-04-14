@@ -1,11 +1,13 @@
 from windows_toasts import WindowsToaster, ToastText1
 import requests
 import socket
+import time
 
 wintoaster = WindowsToaster('Python')
 newToast = ToastText1()
 
 active = True
+startDelay = 60
 externalIPFile = "externalIP.txt"
 serverFile = "servers.txt"
 
@@ -18,6 +20,7 @@ def toast(message):
         print(message)
 
 def main():
+    time.sleep(startDelay)
     faults = 0
     
     # Check for servers off network
